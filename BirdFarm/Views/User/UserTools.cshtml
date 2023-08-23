@@ -1,0 +1,91 @@
+﻿@{
+    var httpContext = ViewContext.HttpContext;
+    int? userId = httpContext.Session.GetInt32("UserId");
+}
+
+@{
+    ViewData["Title"] = "Tools";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="~/css/Admin.css" rel="stylesheet" />
+    <link href="~/css/Home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .panel {
+            background-color: rgb(0,0,0,0);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .panel a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: #444;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease;
+            }
+
+                .panel a:hover {
+                    background-color: #ddd;
+                }
+
+            /* Добавим стили для иконок */
+            .panel i {
+                margin-right: 10px;
+            }
+    </style>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+       
+    </style>
+</head>
+
+<body class="back">
+    <header class="header_up">
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
+    </header>
+    <br />
+    <nav>
+        <div class="panel">
+            <ul>
+                <li><a style="background-color:yellow" asp-area="" method="get" asp-controller="User" asp-action="ListBank"><i class="fas fa-list"></i>List Credits</a></li>
+            </ul>
+        </div>
+
+        <div class="panel">
+            <ul>
+                <li>
+                    <form  style="background-color:yellow" asp-area="" asp-controller="User" asp-action="ListUserCart" method="post">
+                        <button type="submit" style="color:black"><i class="fas fa-credit-card" style="color:black"></i>My Credits</button>
+                       
+                    </form>
+                </li>
+            </ul>
+        </div>
+        <div class="panel">
+            <ul>
+                <li>
+                    <form style="background-color:yellow" asp-area="" asp-controller="Admin" asp-action="EditUser" method="post">
+                        <button type="submit" style="color:black"><i class="fas fa-user" ></i>Profile</button>
+                        <input class="abutton"  type="hidden" name="id" value="@userId" />
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>

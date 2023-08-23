@@ -1,0 +1,140 @@
+﻿@using BirdFarm.ModelsBD;
+@using Newtonsoft.Json
+@model List<Credit>;
+@{
+    ViewData["Title"] = "Credit List";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="~/css/Home.css" rel="stylesheet" />
+    <style>
+        .credits-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Стили для каждого блока с данными о кредите */
+        .credit-info {
+            background-color: rgb(255, 255, 255, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            width: 48%; /* Чтобы два блока вмещались рядом, ширина ограничена до 48% */
+            position: relative; /* Добавляем позиционирование для позиционирования форм */
+        }
+
+            /* Стили для каждого <p> с данными о кредите */
+            .credit-info p {
+                margin: 8px 0;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .credit-info select {
+                padding: 5px;
+                margin-bottom: 5px;
+                border-radius: 8px;
+                align-items: center; /* Выравниваем элементы по центру по горизонтали */
+                width: 48%; /* Чтобы кнопки занимали половину ширины формы */
+            }
+
+            .credit-info label {
+                padding: 5px;
+                margin-bottom: 5px;
+                border-radius: 8px;
+                align-items: center; /* Выравниваем элементы по центру по горизонтали */
+                width: 48%; /* Чтобы кнопки занимали половину ширины формы */
+            }
+
+            .credit-info option {
+                padding: 5px;
+                margin-bottom: 5px;
+                border-radius: 8px;
+                align-items: center; /* Выравниваем элементы по центру по горизонтали */
+                width: 48%; /* Чтобы кнопки занимали половину ширины формы */
+            }
+
+        .credit-info2 input {
+            margin: 8px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Стили для названий полей */
+        .credit-info strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Стили для форм */
+        .credit-info form {
+            display: flex;
+            align-items: center; /* Выравниваем элементы по центру по горизонтали */
+            justify-content: center; /* Центрируем элементы по горизонтали */
+            margin: 8px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+            /* Стили для кнопок в формах */
+            .credit-info form button {
+                padding: 5px;
+                margin-bottom: 5px;
+                border-radius: 8px;
+                align-items: center; /* Выравниваем элементы по центру по горизонтали */
+                background-color: darkgray;
+                width: 48%; /* Чтобы кнопки занимали половину ширины формы */
+            }
+    </style>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .back form{
+            background-color: rgb(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body class="back">
+    <header class="header_up">
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+    </header>
+    <br />
+    <div class="credits-container">
+        @if (Model != null)
+        {
+            @foreach (var credit in Model)
+            {
+                <div class="credit-info">
+                    <p><strong>Name:</strong> @credit.Name</p>
+                    <p><strong>Sum:</strong> @credit.Sum</p>
+                    <p><strong>Procent:</strong> @credit.Procent</p>
+                    <p><strong>Month:</strong> @credit.Month</p>
+                    <p><strong>Status:</strong></p>
+                   
+                    <form asp-controller="Admin" asp-action="UpdateJsonCredit" method="post" style="justify-content:center">
+                        
+                        <select asp-for="@credit.Status">
+                            <option value="true">Active</option>
+                            <option value="false">Inactive</option>
+                        </select>
+                        <input type="hidden" name="Id" value="@credit.Id" />
+
+                        <button style="background-color:yellow; color:black" style="align-items:center" type="submit">Save</button>
+                    </form>
+                </div>
+            }
+        }
+      
+    </div>
+</body>
+</html>

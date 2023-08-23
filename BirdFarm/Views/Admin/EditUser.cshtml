@@ -1,0 +1,96 @@
+﻿@model BirdFarm.ModelsBD.User
+@{
+    ViewData["Title"] = "Edit";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/Home.css" rel="stylesheet" />
+    <link href="~/css/Auth.css" rel="stylesheet" />
+    <title>Edit User</title>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .back form {
+            background-color: rgb(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body class="back">
+    <header class="header_up">
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+    </header>
+    <form asp-controller="Admin" asp-action="UpdateUser" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div>
+            <label>Email:</label>
+            <input type="email" asp-for="Email"   />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="text" asp-for="Password"   />
+        </div>
+        <div>
+            <label>Name:</label>
+            <input type="text" asp-for="Name"  />
+        </div>
+        <div>
+            <label>First Name:</label>
+            <input type="text" asp-for="FirstName"  />
+        </div>
+        <div>
+            <label>Last Name:</label>
+            <input type="text" asp-for="LastName"  />
+        </div>
+        <div>
+            <label>Phone:</label>
+            <input type="text" asp-for="Phone"  />
+        </div>
+        <div>
+            <label>Guarantors:</label>
+            <input type="text" asp-for="Guarantors" />
+        </div>
+        <div>
+            <label>Salary ($):</label>
+            <input type="number" asp-for="Salary" />
+        </div>
+        <div>
+            <label>Work Experience:</label>
+            <input type="number" asp-for="WorkEx" />
+        </div>
+        <div>
+            <label>Document:</label>
+            <input type="text" asp-for="Document" />
+        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <div>
+                <label asp-for="Role">Role:</label>
+                <select asp-for="Role">
+                    <option value=@Model.Role>@Model.Role.ToString()</option>
+                    @if (Model.Role.ToString()=="Admin")
+                    {
+                        <option value="0">User</option>
+                    }
+                    else
+                    {
+                        <option value="1">Admin</option>
+                    }
+                  
+                </select>
+                <span asp-validation-for="Role"></span>
+            </div>
+        }
+       
+        <input style="background-color:yellow; color:black" type="submit" value="Save">
+    </form>
+</body>
+</html>

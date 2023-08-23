@@ -1,0 +1,75 @@
+﻿@{ViewData["Title"] = "Admin Tools";}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin tools</title>
+    <link href="~/css/Home.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-GD3aBB6upK5gbMnURxvcuRJyzMpdCy9Z24CMMMP4RQdNE7zY9ISrmqF5yrHSjxskdX5PcQk5WrxQgHhAJaQhA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <style>
+        .panel {
+            background-color: rgb(0,0,0,0);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .panel a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: #444;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s ease;
+            }
+
+                .panel a:hover {
+                    background-color: #ddd;
+                }
+
+            /* Добавим стили для иконок */
+            .panel i {
+                margin-right: 10px;
+            }
+</style>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .back form {
+            background-color: rgb(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body class="back">
+    <header class="header_up">
+        <a class="logout-button" asp-area=""  asp-controller="Home" asp-action="Logout">Log out</a>
+    </header>
+    <br />
+    <nav>
+        <div class="panel">
+            <ul>
+                <li><a style="background-color:yellow" asp-area="" method="get" asp-controller="Admin" asp-action="GetAllUser"><i class="fas fa-users"></i>All User</a></li>
+            </ul>
+        </div>
+        <div class="panel">
+            <ul>
+                <li><a style="background-color:yellow" asp-area="" asp-controller="Admin" asp-action="AddCredit"><i class="fas fa-plus-circle"></i>Add Credit</a></li>
+            </ul>
+        </div>
+        <div class="panel">
+            <ul>
+                <li><a style="background-color:yellow" asp-area="" method="get" asp-controller="Admin" asp-action="CreditsList"><i class="fas fa-credit-card"></i>Credits</a></li>
+            </ul>
+        </div>
+
+     
+    </nav>
+</body>
+</html>

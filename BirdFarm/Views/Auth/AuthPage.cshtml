@@ -1,0 +1,59 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorize</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="~/css/Auth.css" />
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .back form
+        {
+            background-color: rgb(255, 255, 255, 0.7);
+        }
+    </style>
+    <style>
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px; /* Adjust the height as needed */
+            background-color: #333; /* Optional background color */
+        }
+
+            header p {
+                color: white;
+                font-size: 24px; /* Adjust the font size as needed */
+            }
+    </style>
+</head>
+<body class="back">
+    <header>
+
+    </header>
+    <form method="post" asp-action="AuthPage" asp-controller="Auth">
+        <h1>Authorize</h1>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="Email" maxlength="32" />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="Password" maxlength="32" />
+        </div>
+
+        <div>
+            <input style ="background-color:yellow; color:black" type="submit" value="Login">
+        </div>
+        <div>
+            <p>Don't have an account? <a href="/auth/regpage">Sign up</a></p>
+        </div>
+    </form>
+</body>
+</html>
+

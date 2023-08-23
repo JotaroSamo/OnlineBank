@@ -1,0 +1,100 @@
+﻿@model BirdFarm.ModelsBD.Credit
+
+@{
+    ViewData["Title"] = "Edit Credit";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/Home.css" rel="stylesheet" />
+    <link href="~/css/Auth.css" rel="stylesheet" />
+    <title>Edit Credit</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .edit-form {
+            background-color: rgb(255, 255, 255, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+            .edit-form label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .edit-form input,
+            .edit-form select {
+                width: 100%;
+                padding: 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+            }
+
+            .edit-form select {
+                margin-bottom: 16px;
+            }
+
+            .edit-form input[type="submit"] {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+            }
+
+                .edit-form input[type="submit"]:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .back form {
+            background-color: rgb(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body class="back">
+    <header class="header_up">
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+    </header>
+
+    <div class="edit-form">
+        <h2>Edit Credit</h2>
+        <form asp-controller="Admin" asp-action="UpdateCredit" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div>
+                <label>Name:</label>
+                <input type="text" asp-for="Name" required />
+            </div>
+
+            <div>
+                <label>Procent:</label>
+                <input type="number" asp-for="Procent" required />
+            </div>
+
+            <div>
+                <label>Month:</label>
+                <input type="number" asp-for="Month" required />
+            </div>
+
+            <input style="background-color:yellow; color:black" type="submit" value="Save">
+        </form>
+    </div>
+</body>
+</html>

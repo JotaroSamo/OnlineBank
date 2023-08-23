@@ -1,0 +1,106 @@
+﻿@using BirdFarm.ModelsBD;
+@model List<Credit>;
+@{
+    ViewData["Title"] = "Credit List";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="~/css/Home.css" rel="stylesheet" />
+    <style>
+        .credits-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Стили для каждого блока с данными о кредите */
+        .credit-info {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            width: 48%; /* Чтобы два блока вмещались рядом, ширина ограничена до 48% */
+            position: relative; /* Добавляем позиционирование для позиционирования форм */
+        }
+
+            /* Стили для каждого <p> с данными о кредите */
+            .credit-info p {
+                margin: 8px 0;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+        .credit-info2 input {
+            margin: 8px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        /* Стили для названий полей */
+        .credit-info strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Стили для форм */
+        .credit-info form {
+            display: flex;
+            align-items: center; /* Выравниваем элементы по центру по горизонтали */
+            justify-content: space-between;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+            /* Стили для кнопок в формах */
+            .credit-info form button {
+                padding: 5px;
+                margin-bottom: 5px;
+                border-radius: 8px;
+                justify-content: center;
+                align-items: center; /* Выравниваем элементы по центру по горизонтали */
+                background-color: yellow;
+                width: 48%; /* Чтобы кнопки занимали половину ширины формы */
+            }
+    </style>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+       
+    </style>
+</head>
+<body class="back">
+    <header class="header_up">
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
+        <a asp-area="" asp-controller="User" asp-action="UserTools">Tools</a>
+    </header>
+    <br />
+    <div class="credits-container">
+        @foreach (var credit in Model)
+        {
+            <div class="credit-info" style=" background-color: rgb(255, 255, 255, 0.7);">
+                <p><strong>Name:</strong> @credit.Name</p>
+                <p><strong>Sum ($):</strong> @credit.Sum</p>
+                <p><strong>Procent:</strong> @credit.Procent</p>
+                <p><strong>Month:</strong> @credit.Month</p>
+                <p><strong>Status:</strong> @credit.Status</p>
+                @if (credit.Status == false)
+                {
+                    <form asp-controller="Admin" asp-action="DeleteCredit" method="post" style="align-items:center">
+                        <input type="hidden" name="id" value="@credit.Id" />
+                        <input type="hidden" name="t" id="t" value="true" />
+                        <button style="align-items:center" type="submit">Delete</button>
+                    </form>
+                }
+               
+            </div>
+        }
+    </div>
+</body>
+</html>

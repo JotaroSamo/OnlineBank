@@ -1,0 +1,99 @@
+﻿@model BirdFarm.ModelsBD.User
+@{
+    ViewData["Title"] = "Registration";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/Auth.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/Home.css">
+    <meta charset="UTF-8">
+    <style>
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px; /* Adjust the height as needed */
+            background-color: #333; /* Optional background color */
+        }
+
+            header p {
+                color: white;
+                font-size: 24px; /* Adjust the font size as needed */
+            }
+    </style>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .back form {
+            background-color: rgb(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+
+<body class="back">
+    <header>
+        <div>
+            <p >Registration</p>
+        </div>
+    </header>
+    <form method="post" asp-action="RegPage" asp-controller="Auth">
+        @*@if (string.IsNullOrEmpty(Model.Email) || string.IsNullOrEmpty(Model.Password))
+        {
+            <h2 style="color:indianred">Enter all data!</h2>
+        }*@
+        <div>
+            <label>Email:</label>
+            <input type="email" asp-for="Email" maxlength="32" required />
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" asp-for="Password" maxlength="32" minlength="12" required />
+        </div>
+        <div>
+            <label>Name:</label>
+            <input type="text" asp-for="Name" maxlength="50" required />
+        </div>
+        <div>
+            <label>First Name:</label>
+            <input type="text" asp-for="FirstName" maxlength="50" required />
+        </div>
+        <div>
+            <label>Last Name:</label>
+            <input type="text" asp-for="LastName" maxlength="50" required />
+        </div>
+        <section>
+            <p style="background-color:yellowgreen">Not necessarily</p>
+            <div>
+                <label>Phone:</label>
+                <input type="text" asp-for="Phone" maxlength="20" />
+            </div>
+            <div>
+                <label>Guarantors:</label>
+                <input type="text" asp-for="Guarantors" />
+            </div>
+            <div>
+                <label>Salary ($):</label>
+                <input type="number" asp-for="Salary" />
+            </div>
+            <div>
+                <label>Work Experience:</label>
+                <input type="number" asp-for="WorkEx" />
+            </div>
+            <div>
+                <label>Document:</label>
+                <input type="text" asp-for="Document" />
+            </div>
+            <div>
+                <input style="background-color:yellow; color:black" type="submit" value="Registration">
+            </div>
+        </section>
+        
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,110 @@
+﻿@using BirdFarm.ModelsBD;
+@model List<User>;
+@{ViewData["Title"] = "User List";}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <link href="~/css/Home.css" rel="stylesheet" />
+    <style>
+        .users-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Стили для каждого блока с данными пользователя */
+        .user-info {
+            background-color: rgb(255, 255, 255, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            width: 48%; /* Чтобы две формы вмещались рядом, ширина ограничена до 48% */
+            position: relative; /* Добавляем позиционирование для позиционирования форм */
+        }
+
+            /* Стили для каждого <p> с данными пользователя */
+            .user-info p {
+                margin: 8px 0;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            /* Стили для названий полей */
+            .user-info strong {
+                font-weight: bold;
+                color: #333;
+            }
+
+            /* Стили для форм */
+            .user-info form {
+                display: flex;
+                align-items: center; /* Выравниваем элементы по центру по горизонтали */
+                justify-content: space-between;
+                margin-top: 10px;
+                justify-content: center;
+            }
+
+                /* Стили для кнопок в формах */
+                .user-info form button {
+                    padding: 5px;
+                    margin-bottom: 5px;
+                    border-radius: 8px;
+                    justify-content: center;
+                    align-items: center; /* Выравниваем элементы по центру по горизонтали */
+                    background-color: yellow;
+                    width: 48%; /* Чтобы кнопки занимали половину ширины формы */
+                }
+    </style>
+    <style>
+        body.back {
+            background-image: url("/css/2.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+    </style>
+</head>
+<body class="back">
+    <header class="header_up">
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+       
+    </header>
+    <br />
+    <div class="users-container">
+        @foreach (var user in Model)
+        {
+            <div class="user-info">
+                <p><strong>Name:</strong> @user.Name</p>
+                <p><strong>First Name:</strong> @user.FirstName</p>
+                <p><strong>Last Name:</strong> @user.LastName</p>
+                <p><strong>Email:</strong> @user.Email</p>
+             
+                <p><strong>Phone:</strong> @user.Phone</p>
+                <p><strong>Guarantors:</strong> @user.Guarantors</p>
+                <p><strong>Salary:</strong> @user.Salary</p>
+                <p><strong>Work Experience:</strong> @user.WorkEx</p>
+                <p><strong>Document:</strong> @user.Document</p>
+                <p><strong>Role:</strong> @user.Role</p>
+                <form asp-controller="Admin" asp-action="Delete" method="post" style="align-items:center">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    <button style="align-items:center" type="submit">Delete</button>
+                </form>
+                <form asp-controller="Admin" asp-action="EditUser" method="post" style="align-items:center">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    <button style="align-items:center" type="submit">Edit</button>
+                </form>
+                <form asp-area="" asp-controller="Admin" asp-action="StatusUser" method="post" style="align-items:center">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    <button  style="align-items:center;background-color:yellow; color:black" type="submit">User Cart</button>
+                </form>
+            </div>
+        }
+    </div>
+       
+</body>
+</html>
+
