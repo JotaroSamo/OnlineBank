@@ -88,7 +88,7 @@
                 <p><strong>Название:</strong> @credit.Name</p>
                 <p><strong>Сумма (BYN):</strong> @credit.Sum</p>
                 <p><strong>Процентная ставка:</strong> @credit.Procent</p>
-                <p><strong>Срок кредитования:</strong> @credit.Month</p>
+                <p><strong>Срок кредитования(месяцы):</strong> @credit.Month</p>
                 <p><strong>Статус:</strong> @credit.Status</p>
                 <p><strong>Оплата за месяц BYN:</strong> @((credit.Sum.Value / credit.Month).ToString("F2"))</p>
                 @if (!credit.Status)
