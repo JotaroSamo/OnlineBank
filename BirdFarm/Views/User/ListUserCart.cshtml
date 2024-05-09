@@ -90,6 +90,7 @@
                 <p><strong>Процент:</strong> @credit.Procent</p>
                 <p><strong>Месяц:</strong> @credit.Month</p>
                 <p><strong>Статус:</strong> @credit.Status</p>
+                <p><strong>Оплата за месяц BYN:</strong> @((credit.Sum.Value / credit.Month).ToString("F2"))</p>
                 @if (!credit.Status)
                 {
                     <form asp-controller="Admin" asp-action="DeleteCredit" method="post" style="align-items: center;">

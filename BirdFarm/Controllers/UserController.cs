@@ -40,8 +40,8 @@ namespace BirdFarm.Controllers
                 Name = credit.Name,
                 Month = credit.Month,
                 Procent = credit.Procent,
-                Sum = sum,
-                idd = credit.Id,
+                Sum =sum + (sum*(credit.Procent/100)),
+                idd = userId,
                 date = a
             };
             await _adminService.CreateCreditAsync(ncredit);
