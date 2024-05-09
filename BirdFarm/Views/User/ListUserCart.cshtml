@@ -78,7 +78,7 @@
 <body class="back">
     <header class="header_up">
         <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
-        <a asp-area="" asp-controller="User" asp-action="UserTools">Инструменты</a>
+        <a asp-area="" asp-controller="User" asp-action="UserTools">Главное меню</a>
     </header>
     <br />
     <div class="credits-container">
@@ -87,7 +87,7 @@
             <div class="credit-info" style="background-color: rgb(255, 255, 255, 0.7);">
                 <p><strong>Название:</strong> @credit.Name</p>
                 <p><strong>Сумма (BYN):</strong> @credit.Sum</p>
-                <p><strong>Процент:</strong> @credit.Procent</p>
+                <p><strong>Процентная ставка:</strong> @credit.Procent</p>
                 <p><strong>Месяц:</strong> @credit.Month</p>
                 <p><strong>Статус:</strong> @credit.Status</p>
                 <p><strong>Оплата за месяц BYN:</strong> @((credit.Sum.Value / credit.Month).ToString("F2"))</p>

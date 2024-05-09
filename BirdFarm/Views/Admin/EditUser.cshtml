@@ -28,11 +28,11 @@
         <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
         @if (User.IsInRole("Admin"))
         {
-            <a asp-area="" asp-controller="Admin" asp-action="Tools">Инструменты</a>
+            <a asp-area="" asp-controller="Admin" asp-action="Tools">Главное меню</a>
         }
         else
         {
-            <a asp-area="" asp-controller="User" asp-action="Tools">Инструменты</a>
+            <a asp-area="" asp-controller="User" asp-action="UserTools">Главное меню</a>
         }
 
     </header>
@@ -51,11 +51,11 @@
             <input type="text" asp-for="Name" />
         </div>
         <div>
-            <label>Имя:</label>
+            <label>Фамилия:</label>
             <input type="text" asp-for="FirstName" />
         </div>
         <div>
-            <label>Фамилия:</label>
+            <label>Отчество:</label>
             <input type="text" asp-for="LastName" />
         </div>
         <div>

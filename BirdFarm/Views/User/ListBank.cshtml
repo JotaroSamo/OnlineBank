@@ -75,7 +75,7 @@
 <body class="back">
     <header class="header_up">
         <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
-        <a asp-area="" asp-controller="User" asp-action="UserTools">Инструменты</a>
+        <a asp-area="" asp-controller="User" asp-action="UserTools">Главное меню</a>
     </header>
     <br />
     <div style="display: flex; justify-content: center; align-items: center; min-width: 450px">
@@ -84,7 +84,7 @@
             {
                 <div class="credit-info" style="background-color: rgb(255, 255, 255, 0.7);">
                     <p><strong>Название:</strong> @credit.Name</p>
-                    <p><strong>Процент:</strong> @credit.Procent</p>
+                    <p><strong>Процентная ставка:</strong> @credit.Procent</p>
                     <p><strong>Месяц:</strong> @credit.Month</p>
                     <form class="credit-info2" asp-controller="User" asp-action="AddCart" method="post">
                         <div class="credit-info2">
