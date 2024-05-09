@@ -88,7 +88,7 @@
                     <p><strong>Срок кредитования(месяцы):</strong> @credit.Month</p>
                     <form class="credit-info2" asp-controller="User" asp-action="AddCart" method="post">
                         <div class="credit-info2">
-                            <strong>Сумма (BYN):</strong><input name="sum" type="text">
+                            <strong>Сумма (BYN):</strong><input name="sum" type="number">
                             <input type="hidden" name="id" value="@credit.Id" />
                             <button type="submit">ОК</button>
                         </div>
