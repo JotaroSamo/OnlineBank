@@ -33,21 +33,25 @@ namespace BirdFarm.Controllers
         {
             try
             {
-                if (await _userService.CheckNull(model) == false)
+                if (model.Phone !=""|| model.Phone!=null)
                 {
-                    return View(model);
-                }
-              
-                if (await _userService.GetCheckAsync(model) == null)
-                {
-                    await _userService.CreateAsync(model);
-                   
-                    return RedirectToAction("Index", "Home");
-                }
+                    if (await _userService.CheckNull(model) == false)
+                    {
+                        return View(model);
+                    }
 
-              
+                    if (await _userService.GetCheckAsync(model) == null)
+                    {
+                        await _userService.CreateAsync(model);
 
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
                 return View(model);
+
+
+
+
             }
             catch (Exception )
             {

@@ -2,7 +2,7 @@
 @using Newtonsoft.Json
 @model List<Credit>;
 @{
-    ViewData["Title"] = "Credit List";
+    ViewData["Title"] = "Список Кредитов";
 }
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
             margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             width: 48%; /* Чтобы два блока вмещались рядом, ширина ограничена до 48% */
-            position: relative; /* Добавляем позиционирование для позиционирования форм */
+            position: relative; /* Добавляем позиционирование для форм */
         }
 
             /* Стили для каждого <p> с данными о кредите */
@@ -98,15 +98,15 @@
             background-attachment: fixed;
         }
 
-        .back form{
+        .back form {
             background-color: rgb(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body class="back">
     <header class="header_up">
-        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
-        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Инструменты</a>
     </header>
     <br />
     <div class="credits-container">
@@ -115,26 +115,25 @@
             @foreach (var credit in Model)
             {
                 <div class="credit-info">
-                    <p><strong>Name:</strong> @credit.Name</p>
-                    <p><strong>Sum:</strong> @credit.Sum</p>
-                    <p><strong>Procent:</strong> @credit.Procent</p>
-                    <p><strong>Month:</strong> @credit.Month</p>
-                    <p><strong>Status:</strong></p>
-                   
+                    <p><strong>Название:</strong> @credit.Name</p>
+                    <p><strong>Сумма:</strong> @credit.Sum</p>
+                    <p><strong>Процент:</strong> @credit.Procent</p>
+                    <p><strong>Месяц:</strong> @credit.Month</p>
+                    <p><strong>Статус:</strong></p>
+
                     <form asp-controller="Admin" asp-action="UpdateJsonCredit" method="post" style="justify-content:center">
-                        
+
                         <select asp-for="@credit.Status">
-                            <option value="true">Active</option>
-                            <option value="false">Inactive</option>
+                            <option value="true">Активный</option>
+                            <option value="false">Неактивный</option>
                         </select>
                         <input type="hidden" name="Id" value="@credit.Id" />
 
-                        <button style="background-color:yellow; color:black" style="align-items:center" type="submit">Save</button>
+                        <button style="background-color: yellow; color: black;" style="align-items:center" type="submit">Сохранить</button>
                     </form>
                 </div>
             }
         }
-      
     </div>
 </body>
 </html>

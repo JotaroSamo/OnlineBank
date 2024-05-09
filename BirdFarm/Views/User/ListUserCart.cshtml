@@ -1,7 +1,8 @@
-﻿@using BirdFarm.ModelsBD;
+﻿
+@using BirdFarm.ModelsBD;
 @model List<Credit>;
 @{
-    ViewData["Title"] = "Credit List";
+    ViewData["Title"] = "Список Моих Кредитов";
 }
 
 <!DOCTYPE html>
@@ -39,6 +40,7 @@
             font-size: 16px;
             line-height: 1.5;
         }
+
         /* Стили для названий полей */
         .credit-info strong {
             font-weight: bold;
@@ -71,36 +73,34 @@
             background-size: cover;
             background-attachment: fixed;
         }
-        
-       
     </style>
 </head>
 <body class="back">
     <header class="header_up">
-        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
-        <a asp-area="" asp-controller="User" asp-action="UserTools">Tools</a>
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
+        <a asp-area="" asp-controller="User" asp-action="UserTools">Инструменты</a>
     </header>
     <br />
     <div class="credits-container">
         @foreach (var credit in Model)
         {
-            <div class="credit-info" style=" background-color: rgb(255, 255, 255, 0.7);">
-                <p><strong>Name:</strong> @credit.Name</p>
-                <p><strong>Sum ($):</strong> @credit.Sum</p>
-                <p><strong>Procent:</strong> @credit.Procent</p>
-                <p><strong>Month:</strong> @credit.Month</p>
-                <p><strong>Status:</strong> @credit.Status</p>
-                @if (credit.Status == false)
+            <div class="credit-info" style="background-color: rgb(255, 255, 255, 0.7);">
+                <p><strong>Название:</strong> @credit.Name</p>
+                <p><strong>Сумма ($):</strong> @credit.Sum</p>
+                <p><strong>Процент:</strong> @credit.Procent</p>
+                <p><strong>Месяц:</strong> @credit.Month</p>
+                <p><strong>Статус:</strong> @credit.Status</p>
+                @if (!credit.Status)
                 {
-                    <form asp-controller="Admin" asp-action="DeleteCredit" method="post" style="align-items:center">
+                    <form asp-controller="Admin" asp-action="DeleteCredit" method="post" style="align-items: center;">
                         <input type="hidden" name="id" value="@credit.Id" />
                         <input type="hidden" name="t" id="t" value="true" />
-                        <button style="align-items:center" type="submit">Delete</button>
+                        <button style="align-items: center;" type="submit">Удалить</button>
                     </form>
                 }
-               
             </div>
         }
     </div>
 </body>
 </html>
+

@@ -1,11 +1,12 @@
 ﻿@using BirdFarm.ModelsBD;
 @model List<User>;
-@{ViewData["Title"] = "User List";}
+@{
+    ViewData["Title"] = "Список Пользователей";
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-   
     <link href="~/css/Home.css" rel="stylesheet" />
     <style>
         .users-container {
@@ -14,7 +15,7 @@
             flex-wrap: wrap;
         }
 
-        /* Стили для каждого блока с данными пользователя */
+        /* Стили для каждого блока с данными о пользователе */
         .user-info {
             background-color: rgb(255, 255, 255, 0.7);
             border-radius: 8px;
@@ -22,10 +23,10 @@
             margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             width: 48%; /* Чтобы две формы вмещались рядом, ширина ограничена до 48% */
-            position: relative; /* Добавляем позиционирование для позиционирования форм */
+            position: relative; /* Добавляем позиционирование для расположения форм */
         }
 
-            /* Стили для каждого <p> с данными пользователя */
+            /* Стили для каждого <p> с данными о пользователе */
             .user-info p {
                 margin: 8px 0;
                 font-size: 16px;
@@ -64,47 +65,47 @@
             background-size: cover;
             background-attachment: fixed;
         }
-
     </style>
 </head>
 <body class="back">
     <header class="header_up">
-        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
-        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
-       
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Инструменты</a>
     </header>
     <br />
+
     <div class="users-container">
         @foreach (var user in Model)
         {
             <div class="user-info">
-                <p><strong>Name:</strong> @user.Name</p>
-                <p><strong>First Name:</strong> @user.FirstName</p>
-                <p><strong>Last Name:</strong> @user.LastName</p>
+                <p><strong>Имя:</strong> @user.Name</p>
+                <p><strong>Фамилия:</strong> @user.LastName</p>
                 <p><strong>Email:</strong> @user.Email</p>
-             
-                <p><strong>Phone:</strong> @user.Phone</p>
-                <p><strong>Guarantors:</strong> @user.Guarantors</p>
-                <p><strong>Salary:</strong> @user.Salary</p>
-                <p><strong>Work Experience:</strong> @user.WorkEx</p>
-                <p><strong>Document:</strong> @user.Document</p>
-                <p><strong>Role:</strong> @user.Role</p>
+                <p><strong>Телефон:</strong> @user.Phone</p>
+                <p><strong>Поручители:</strong> @user.Guarantors</p>
+                <p><strong>Зарплата (BYN):</strong> @user.Salary</p>
+                <p><strong>Стаж работы (Месяцы):</strong> @user.WorkEx</p>
+                <p><strong>Документ:</strong> @user.Document</p>
+                <p><strong>Роль:</strong> @user.Role</p>
+
                 <form asp-controller="Admin" asp-action="Delete" method="post" style="align-items:center">
                     <input type="hidden" name="id" value="@user.Id" />
-                    <button style="align-items:center" type="submit">Delete</button>
+                    <button style="align-items:center" type="submit">Удалить</button>
                 </form>
+
                 <form asp-controller="Admin" asp-action="EditUser" method="post" style="align-items:center">
                     <input type="hidden" name="id" value="@user.Id" />
-                    <button style="align-items:center" type="submit">Edit</button>
+                    <button style="align-items:center" type="submit">Редактировать</button>
                 </form>
+
                 <form asp-area="" asp-controller="Admin" asp-action="StatusUser" method="post" style="align-items:center">
                     <input type="hidden" name="id" value="@user.Id" />
-                    <button  style="align-items:center;background-color:yellow; color:black" type="submit">User Cart</button>
+                    <button style="align-items:center; background-color: yellow; color: black" type="submit">Корзина пользователя</button>
                 </form>
             </div>
         }
     </div>
-       
 </body>
 </html>
+
 

@@ -7,45 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/css/Home.css" rel="stylesheet" />
     <link href="~/css/Auth.css" rel="stylesheet" />
-    <title>Add Credit</title>
-     <style>
+    <title>Добавить Кредит</title>
+    <style>
         body.back {
             background-image: url("/css/2.jpg");
             background-size: cover;
             background-attachment: fixed;
         }
 
-        .back form{
+        .back form {
             background-color: rgb(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body class="back">
     <header class="header_up">
-        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
-        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Инструменты</a>
     </header>
-    
+
+    <div>
         <div>
-            <div >
-
             <form asp-area="" asp-controller="Admin" asp-action="SaveAddCredit" method="post">
-                    <!-- Specify the path to the server-side handler -->
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="Name" required>
+                <!-- Укажите путь к серверному обработчику -->
+                <label for="name">Название:</label>
+                <input type="text" id="name" name="Name" required>
 
-                  
+                <label for="procent">Процентная ставка:</label>
+                <input type="number" id="procent" name="Procent" step="0.01" required>
 
-                    <label for="procent">Interest Rate:</label>
-                    <input type="number" id="procent" name="Procent" step="0.01" required>
+                <label for="month">Месяцы:</label>
+                <input type="number" id="month" name="Month" required>
 
-                    <label for="month">Months:</label>
-                    <input type="number" id="month" name="Month" required>
-
-
-                <input style="background-color:yellow; color:black" type="submit" value="Add Credit">
-                </form>
-            </div>
+                <input style="background-color: yellow; color: black" type="submit" value="Добавить Кредит">
+            </form>
         </div>
+    </div>
 </body>
 </html>

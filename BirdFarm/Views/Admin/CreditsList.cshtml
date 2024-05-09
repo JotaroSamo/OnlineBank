@@ -2,7 +2,7 @@
 @model List<Credit>;
 
 @{
-    ViewData["Title"] = "Credit List";
+    ViewData["Title"] = "Список кредитов";
 }
 
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
             margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             width: 48%; /* Чтобы два блока вмещались рядом, ширина ограничена до 48% */
-            position: relative; /* Добавляем позиционирование для позиционирования форм */
+            position: relative; /* Добавляем позиционирование для форм */
         }
 
             /* Стили для каждого <p> с данными о кредите */
@@ -57,7 +57,7 @@
                     border-radius: 8px;
                     justify-content: center;
                     align-items: center; /* Выравниваем элементы по центру по горизонтали */
-                    background-color:yellow;
+                    background-color: yellow;
                     width: 48%; /* Чтобы кнопки занимали половину ширины формы */
                 }
 
@@ -70,24 +70,24 @@
 </head>
 <body class="back">
     <header class="header_up">
-        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
-        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Инструменты</a>
     </header>
     <br />
     <div class="credits-container">
         @foreach (var credit in Model)
         {
             <div class="credit-info">
-                <p><strong>Name:</strong> @credit.Name</p>
-                <p><strong>Procent:</strong> @credit.Procent</p>
-                <p><strong>Month:</strong> @credit.Month</p>
-                <form asp-controller="Admin" asp-action="DeleteCredit" method="post" style="align-items:center">
+                <p><strong>Название:</strong> @credit.Name</p>
+                <p><strong>Процент:</strong> @credit.Procent</p>
+                <p><strong>Месяц:</strong> @credit.Month</p>
+                <form asp-controller="Admin" asp-action="DeleteCredit" method="post" style="align-items: center;">
                     <input type="hidden" name="id" value="@credit.Id" />
-                    <button style="align-items:center" type="submit">Delete</button>
+                    <button style="align-items: center;" type="submit">Удалить</button>
                 </form>
-                <form asp-controller="Admin" asp-action="EditCredit" method="post" style="align-items:center">
+                <form asp-controller="Admin" asp-action="EditCredit" method="post" style="align-items: center;">
                     <input type="hidden" name="id" value="@credit.Id" />
-                    <button style="background-color:yellow; color:black" style="align-items:center" type="submit">Edit</button>
+                    <button style="background-color: yellow; color: black;" type="submit">Редактировать</button>
                 </form>
             </div>
         }

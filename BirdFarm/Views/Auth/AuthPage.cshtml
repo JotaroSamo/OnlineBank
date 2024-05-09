@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Authorize</title>
+    <title>Авторизация</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="~/css/Auth.css" />
     <style>
@@ -12,8 +12,8 @@
             background-size: cover;
             background-attachment: fixed;
         }
-        .back form
-        {
+
+        .back form {
             background-color: rgb(255, 255, 255, 0.7);
         }
     </style>
@@ -22,36 +22,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 20px; /* Adjust the height as needed */
-            background-color: #333; /* Optional background color */
+            height: 20px; /* Подгоните высоту по необходимости */
+            background-color: #333; /* Опциональный цвет фона */
         }
 
             header p {
                 color: white;
-                font-size: 24px; /* Adjust the font size as needed */
+                font-size: 24px; /* Подгоните размер шрифта по необходимости */
             }
     </style>
 </head>
 <body class="back">
     <header>
-
     </header>
     <form method="post" asp-action="AuthPage" asp-controller="Auth">
-        <h1>Authorize</h1>
+        <h1>Авторизация</h1>
         <div>
             <label>Email:</label>
             <input type="email" name="Email" maxlength="32" />
         </div>
         <div>
-            <label>Password:</label>
+            <label>Пароль:</label>
             <input type="password" name="Password" maxlength="32" />
         </div>
 
         <div>
-            <input style ="background-color:yellow; color:black" type="submit" value="Login">
+            <input style="background-color: yellow; color: black" type="submit" value="Войти">
         </div>
         <div>
-            <p>Don't have an account? <a href="/auth/regpage">Sign up</a></p>
+            <p>Нет аккаунта? <a href="/auth/regpage">Зарегистрируйтесь</a></p>
         </div>
     </form>
 </body>

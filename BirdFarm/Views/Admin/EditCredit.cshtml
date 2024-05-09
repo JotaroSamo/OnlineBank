@@ -1,7 +1,7 @@
 ﻿@model BirdFarm.ModelsBD.Credit
 
 @{
-    ViewData["Title"] = "Edit Credit";
+    ViewData["Title"] = "Редактирование кредита";
 }
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/css/Home.css" rel="stylesheet" />
     <link href="~/css/Auth.css" rel="stylesheet" />
-    <title>Edit Credit</title>
+    <title>Редактировать кредит</title>
     <style>
         body {
             background-color: #f0f0f0;
@@ -69,31 +69,31 @@
 </head>
 <body class="back">
     <header class="header_up">
-        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Log out</a>
-        <a asp-area="" asp-controller="Admin" asp-action="Tools">Tools</a>
+        <a class="logout-button" asp-area="" asp-controller="Home" asp-action="Logout">Выйти</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Tools">Инструменты</a>
     </header>
 
     <div class="edit-form">
-        <h2>Edit Credit</h2>
+        <h2>Редактировать кредит</h2>
         <form asp-controller="Admin" asp-action="UpdateCredit" method="post">
             <input type="hidden" asp-for="Id" />
 
             <div>
-                <label>Name:</label>
+                <label>Название:</label>
                 <input type="text" asp-for="Name" required />
             </div>
 
             <div>
-                <label>Procent:</label>
+                <label>Процент:</label>
                 <input type="number" asp-for="Procent" required />
             </div>
 
             <div>
-                <label>Month:</label>
+                <label>Месяц:</label>
                 <input type="number" asp-for="Month" required />
             </div>
 
-            <input style="background-color:yellow; color:black" type="submit" value="Save">
+            <input style="background-color: yellow; color: black" type="submit" value="Сохранить">
         </form>
     </div>
 </body>
