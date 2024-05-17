@@ -25,8 +25,8 @@ namespace BirdFarm.Controllers
         }
         public async Task<IActionResult> ListBank()
         {
-
-            return View(await _adminService.GetAllCreditsAsync());
+            var a = await _adminService.GetAllCreditsAsync();
+            return View(a);
         }
         public async Task<IActionResult> AddCart(int id, double sum)
         {
@@ -45,11 +45,12 @@ namespace BirdFarm.Controllers
                 date = a
             };
             await _adminService.CreateCreditAsync(ncredit);
-            credit = await _adminService.GetCreditByIddAsync(id, a);
+            await Task.Delay(1000);
+           var credit2 = await _adminService.GetCreditByIddAsync(userId, a);
             Cart cart = new Cart()
             {
              UserId = userId,
-             CreditId = credit.Id,
+             CreditId = credit2.Id,
              date = a
              
                 };
