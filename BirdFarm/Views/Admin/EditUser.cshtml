@@ -62,22 +62,12 @@
             <label>Телефон:</label>
             <input type="text" asp-for="Phone" />
         </div>
-        <div>
-            <label>Поручители:</label>
-            <input type="text" asp-for="Guarantors" />
-        </div>
+        
         <div>
             <label>Зарплата (BYN):</label>
             <input type="number" asp-for="Salary" />
         </div>
-        <div>
-            <label>Опыт работы (месяцы):</label>
-            <input type="number" asp-for="WorkEx" />
-        </div>
-        <div>
-            <label>Документ:</label>
-            <input type="text" asp-for="Document" />
-        </div>
+
         @if (User.IsInRole("Admin"))
         {
             <div>

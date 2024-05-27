@@ -75,6 +75,10 @@
             <input type="text" asp-for="Phone" maxlength="20" />
 
         </div>
+        <div>
+            <label>Зарплата (BYN):</label>
+            <input type="number" asp-for="Salary" />
+        </div>
         <div class="checkbox-group">
             <input type="checkbox" id="dataFZSN" required>
             <label for="dataFZSN" class="checkbox-label">Разрешаю предоставление моих данных из ФЗСН</label>
@@ -84,24 +88,6 @@
             <label for="dataProcessing" class="checkbox-label">Предоставляю разрешение на обработку моих персональных данных</label>
         </div>
         <section>
-            <p style="background-color: yellowgreen">Не обязательно</p>
-           
-            <div>
-                <label>Поручители:</label>
-                <input type="text" asp-for="Guarantors" />
-            </div>
-            <div>
-                <label>Зарплата (BYN):</label>
-                <input type="number" asp-for="Salary" />
-            </div>
-            <div>
-                <label>Опыт работы (месяцы):</label>
-                <input type="number" asp-for="WorkEx" />
-            </div>
-            <div>
-                <label>Документ:</label>
-                <input type="text" asp-for="Document" />
-            </div>
             <div>
                 <input style="background-color: gray; color: white" type="submit" value="Регистрация" onclick="return validateForm()">
             </div>

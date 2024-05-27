@@ -12,11 +12,10 @@ namespace BirdFarm.ModelsBD
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public double Salary { get; set; }
         public string? Phone { get; set; }
-        public string? Guarantors  { get; set; }
-        public double? Salary { get; set; }
-        public int? WorkEx { get; set; }
-        public string? Document { get; set; }
+
+
         public Role.Role Role { get; set; }
 
     }

@@ -1,6 +1,7 @@
 ﻿using BirdFarm.Interfaces;
 using BirdFarm.ModelsBD;
 using Microsoft.AspNetCore.Mvc;
+using OnlineBank.Models;
 using System.Security.Claims;
 
 namespace BirdFarm.Controllers
@@ -25,8 +26,14 @@ namespace BirdFarm.Controllers
         }
         public async Task<IActionResult> ListBank()
         {
-            var a = await _adminService.GetAllCreditsAsync();
-            return View(a);
+            var Credit = await _adminService.GetAllCreditsAsync();
+            var User = await _adminService.GetUserByIdAsync(GetCurrentUserId());
+            var creditUser = new CreditUser()
+            {
+                user = User,
+                credit = Credit
+            };
+            return View(creditUser);
         }
         public async Task<IActionResult> AddCart(int id, double sum)
         {
