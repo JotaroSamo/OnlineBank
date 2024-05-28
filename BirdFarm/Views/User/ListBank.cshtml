@@ -83,15 +83,15 @@
         <div class="credits-container">
             @foreach (var credit in Model.credit)
             {
-                <div class="credit-info" style="background-color: rgb(255, 255, 255, 0.7);">
+                <div class="credit-info" style="background-color: rgba(255, 255, 255, 0.7);">
                     <p><strong>Название:</strong> @credit.Name</p>
                     <p><strong>Процентная ставка:</strong> @credit.Procent</p>
                     <p><strong>Срок кредитования(месяцы):</strong> @credit.Month</p>
-                    <form class="credit-info2" asp-controller="User" asp-action="AddCart" method="post">
+                    <form class="credit-info2" asp-controller="User" asp-action="AddCart" method="post" data-interest-rate="@credit.Procent">
                         <div class="credit-info2">
-                            <strong>Сумма (BYN):</strong><input id="creditSum" name="sum" type="number">
+                            <strong>Сумма (BYN):</strong><input id="creditSum" name="sum" type="number" data-credit-procent="@credit.Procent" data-credit-month="@credit.Month">
                             <input type="hidden" name="id" value="@credit.Id" />
-                            <button type="submit">ОК</button>
+                            <button type="submit">OK</button>
                         </div>
                     </form>
                 </div>
@@ -100,20 +100,26 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var creditInput = document.getElementById("creditSum");
-            var submitButton = creditInput.closest("form").querySelector("button");
+            var creditInputs = document.querySelectorAll("#creditSum");
 
-            creditInput.addEventListener("input", function () {
-                var creditSum = parseFloat(creditInput.value);
-                var monthlyIncome = @Model.user.Salary; // Предположим, что это значение вашего ежемесячного дохода
+            creditInputs.forEach(function (creditInput) {
+                var submitButton = creditInput.closest("form").querySelector("button");
 
-                var maxAllowedPayment = monthlyIncome * 0.5; // 50% от ежемесячного дохода
+                creditInput.addEventListener("input", function () {
+                    var creditSum = parseFloat(creditInput.value);
+                    var creditProcent = parseFloat(creditInput.getAttribute("data-credit-procent"));
+                    var creditMonth = parseFloat(creditInput.getAttribute("data-credit-month"));
+                    var monthlyIncome = parseFloat(@Model.user.Salary);
 
-                if (creditSum > maxAllowedPayment) {
-                    submitButton.disabled = true;
-                } else {
-                    submitButton.disabled = false;
-                }
+                    var monthlyPayment = (creditSum * (1 + creditProcent / 100)) / creditMonth; // Предполагаем, что кредит распределяется на 12 месяцев
+                    var maxAllowedPayment = monthlyIncome * 0.5;
+
+                    if (monthlyPayment > maxAllowedPayment) {
+                        submitButton.disabled = true;
+                    } else {
+                        submitButton.disabled = false;
+                    }
+                });
             });
         });
     </script>
